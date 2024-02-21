@@ -2,7 +2,7 @@ package io.slot;
 
 import io.loadkit.Loaders;
 import io.loadkit.Resource;
-import org.springframework.boot.loader.JarLauncher;
+import io.xjar.boot.XJarLauncher;
 
 import java.io.File;
 import java.net.URL;
@@ -14,14 +14,15 @@ import java.util.*;
  * @author Payne 646742615@qq.com
  * 2019/2/16 10:49
  */
-public class BootLauncher extends JarLauncher {
+public class BootLauncher extends XJarLauncher {
     private static final String SLOT_ROOT = "--slot.root=";
     private static final String SLOT_PATH = "--slot.path=";
 
     private final String root;
     private final List<String> paths;
 
-    public BootLauncher(String root, List<String> paths) {
+    public BootLauncher(String root, List<String> paths, String... args) throws Exception {
+        super(args);
         if (root == null) {
             throw new NullPointerException("root must not be null");
         }
@@ -46,7 +47,7 @@ public class BootLauncher extends JarLauncher {
                 arguments.add(arg);
             }
         }
-        new BootLauncher(root, paths).launch(arguments.toArray(new String[0]));
+        new BootLauncher(root, paths, args).launch(arguments.toArray(new String[0]));
     }
 
     @Override
