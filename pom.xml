@@ -58,7 +58,7 @@
             <version>3.1.1</version>
         </dependency>
         <dependency>
-            <groupId>io.xjar</groupId>
+            <groupId>com.github.core-lib</groupId>
             <artifactId>xjar</artifactId>
             <version>4.0.2</version>
         </dependency>
